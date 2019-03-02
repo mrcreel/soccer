@@ -7,8 +7,9 @@ const initDB = () => {
   )
 
   mongoose.connection.once('open', () => {
-    console.log('connected to database');
-  });
+    // eslint-disable-next-line no-console
+    console.log('connected to database')
+  })
 
 }
 

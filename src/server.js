@@ -14,7 +14,8 @@ const app = new Koa()
 app.listen(process.env.GRAPHQL_PORT)
 
 app.on('error', err => {
-  log.error('server error', err)
+  // eslint-disable-next-line no-console
+  console.log('server error', err)
 })
 
 app.use(mount('/graphql', graphqlHTTP({
