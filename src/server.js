@@ -19,6 +19,6 @@ app.on('error', err => {
 })
 
 app.use(mount('/graphql', graphqlHTTP({
-  schema,
+  schema: schema,
   graphiql: true
 })))
