@@ -1,6 +1,6 @@
 const {GraphQLID} = require('graphql')
 
-const leagueGraphQLType = require('../leagueType')
+const leagueGraphQLType = require('../types/leagueType')
 const League = require('../../models/league')
 
 module.exports = {

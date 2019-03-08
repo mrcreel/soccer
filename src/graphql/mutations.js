@@ -1,12 +1,10 @@
-const{
-  GraphQLObjectType
-} = require('graphql')
+const{GraphQLObjectType} = require('graphql')
 
 const addLeague = require('./mutations/addLeague')
 const removeLeague = require('./mutations/removeLeague')
 const updateLeague = require('./mutations/updateLeague')
 
-const Mutation = new GraphQLObjectType({
+const Mutations = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
     addLeague,
@@ -15,4 +13,4 @@ const Mutation = new GraphQLObjectType({
   }
 })
 
-module.exports = Mutation
+module.exports = Mutations
