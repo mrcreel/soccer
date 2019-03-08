@@ -1,67 +1,17 @@
 const{
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLInt,
-  GraphQLID
+  GraphQLObjectType
 } = require('graphql')
 
-const leagueGraphQLType = require('./leagueType')
-const League = require('./../models/league')
+const addLeague = require('./mutations/addLeague')
+const removeLeague = require('./mutations/removeLeague')
+const updateLeague = require('./mutations/updateLeague')
 
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-
-    addLeague: {
-      type: leagueGraphQLType,
-      args: {
-        name: {type: GraphQLString},
-        tier: {type: GraphQLInt},
-      },
-      resolve(parent, args) {
-        const newLeague = new League({
-          name: args.name,
-          tier: args.tier,
-        })
-        return newLeague.save()
-      }
-    },
-
-    updateLeague: {
-      type: leagueGraphQLType,
-      args: {
-        id: {type: GraphQLID},
-        name: {type: GraphQLString},
-        tier: {type: GraphQLInt},
-      },
-      resolve(parent, args){
-        return League.findById(args.id)
-          .then(league => {
-            league.name = args.name
-            league.tier = args.tier
-
-            return league.save()
-          })
-          .then(updatedLeague => updatedLeague)
-          // eslint-disable-next-line no-console
-          .catch(err => console.log(err))
-      }
-    },
-
-    removeLeague: {
-      type: leagueGraphQLType,
-      args: {
-        id: { type: GraphQLID }
-      },
-      resolve(parent, args) {
-        return League.findByIdAndDelete(args.id).exec()
-          .then(league => league.remove())
-          .then(deletedLeague => deletedLeague)
-          // eslint-disable-next-line no-console
-          .catch(err => console.log(err))
-      }
-    }
-
+    addLeague,
+    removeLeague,
+    updateLeague
   }
 })
 
