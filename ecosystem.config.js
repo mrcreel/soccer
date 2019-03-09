@@ -12,9 +12,9 @@ module.exports = {
     env: {
       NODE_ENV: 'development',
       GRAPHQL_PORT: 9000,
-      MONGODB_DB: 'ds031257.mlab.com:31257/soccer',
-      MONGODB_USER: 'boss01',
-      MONGODB_PASSWORD: 'boss01'
+      MONGODB_DB: '',
+      MONGODB_USER: '',
+      MONGODB_PASSWORD: ''
     },
     env_production: {
       NODE_ENV: 'production'
